@@ -95,7 +95,7 @@ class Trial:
                 + extra_x_offsets[idx]
             y = config["ANSWERS_POS"][1] - (((len(self.info["answers"]) - 1) / 2 - idx) * config["ANSWERS_OFFSET"][1])
             word = visual.TextStim(win=win, font=u'Arial', text=elem["word"], height=config["ANSWER_SIZE"],
-                                   color=u'black', pos=[x, y])
+                                   color=config["ANSWER_COLOR"], pos=[x, y])
 
             frame = visual.Rect(win, width=words_length[idx] + 40, height=config["ANSWER_SIZE"] + 10,
                                 pos=[x, y], lineColor=config["FRAME_COLOR"], lineWidth=config["FRAME_LINE"])
