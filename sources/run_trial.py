@@ -47,7 +47,12 @@ def run_trial(trial, config, response_clock, clock_image, mouse, win, fixation, 
     if clock_image is not None:
         clock_image.setAutoDraw(False)
     if training:
-        feedback_file_name = "feedback_positive.txt" if acc == 1 else "feedback_negative.txt"
+        if acc == 1:
+            feedback_file_name = "feedback_positive.txt"
+        elif acc == -1:
+            feedback_file_name = "feedback_no_answer.txt"
+        else:
+            feedback_file_name = "feedback_negative.txt"
         text = read_text_from_file(join('.', 'messages', feedback_file_name)) + \
                read_text_from_file(join('.', 'messages', "feedback_info_{}.txt".format(training_trial_idx + 1)))
 
