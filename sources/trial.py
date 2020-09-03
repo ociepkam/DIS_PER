@@ -31,16 +31,16 @@ class Trial:
         if task_category not in all_categories:
             task_category = random.choice(all_categories)
         all_categories.remove(task_category)
-        if task_length is None:
+        if task_length in ["", None]:
             task_length = random.choice(list(set(word_bank["LENGTH"])))
-        if distractor_category is None:
+        if distractor_category in ["", None]:
             distractor_category = random.choice(all_categories)
-        all_categories.remove(distractor_category)
 
         task = self.__choice_word(word_bank, task_length, task_category, used_words)
         if trial_with_distractor == "TRUE":
             distractor = self.__choice_word(word_bank, task_length, distractor_category, used_words)
             answers = [task, distractor]
+            all_categories.remove(distractor_category)
         else:
             distractor = copy.copy(task)
             answers = [task]
